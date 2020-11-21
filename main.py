@@ -7,9 +7,14 @@ import requests
 import json
 
 
+# longitude, latitude, clouds, temp, feels_like, pressure, \
+# 		humidity, country, city_name = weather()
+
+
 class WeatherApp(QMainWindow):
 	def __init__(self):
 		super(WeatherApp, self).__init__()
+		# self.setGeometry(300, 300, 400, 400)
 		self.setFixedSize(400, 400)
 		self.setWindowTitle("Weather App")
 		self.ui()
@@ -89,13 +94,13 @@ class WeatherApp(QMainWindow):
 		self.b2.move(230, 350)
 
 		self.city_edit = QLineEdit("Kyiv", self)
+		self.city_edit.returnPressed.connect(self.b1.click)
 		self.city_edit.move(250, 50)
 		self.city_edit.resize(80, 29)
 
 	def clicked(self):
 		longitude, latitude, clouds, temp, feels_like, pressure, \
 			humidity, country, city_name = self.weather()
-            
 		self.label.setText(country)
 		self.label2.setText(city_name)
 		self.label3.setText(str(temp))
@@ -108,7 +113,6 @@ class WeatherApp(QMainWindow):
 
 	def weather(self):
 		api_key = ""
-       # API key can be register on https://openweathermap.org/
 		city = self.city_edit.text()
 
 		w_result = requests.get("https://api.openweathermap.org/data/2.5/" + 
