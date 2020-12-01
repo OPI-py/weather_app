@@ -109,7 +109,7 @@ class WeatherApp(QMainWindow):
 
 	def weather(self):
 		api_key = ""
-		# API key can be register on https://openweathermap.org/
+		# Register API key on https://openweathermap.org/
 		city = self.city_edit.text()
 
 		w_result = requests.get("https://api.openweathermap.org/data/2.5/" + 
