@@ -9,7 +9,7 @@ import json
 
 class WeatherApp(QMainWindow):
 	def __init__(self):
-		super(WeatherApp, self).__init__()
+		super().__init__()
 		self.setFixedSize(400, 400)
 		self.setWindowTitle("Weather App")
 		self.ui()
